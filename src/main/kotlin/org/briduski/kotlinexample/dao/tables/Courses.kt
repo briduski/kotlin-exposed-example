@@ -1,10 +1,6 @@
 package org.briduski.kotlinexample.dao.tables
 
-import org.briduski.kotlinexample.dao.tables.Authors.autoIncrement
-import org.briduski.kotlinexample.dao.tables.Authors.nullable
 import org.jetbrains.exposed.dao.id.IntIdTable
-import org.jetbrains.exposed.sql.Table
-import java.time.Duration
 
 /*
 object Courses: Table("COURSES") {
@@ -18,7 +14,8 @@ object Courses: Table("COURSES") {
 object Courses: IntIdTable("COURSES") {
     val name = varchar("course_name", 50).index()  // Column<String>
     val duration = long("course_duration")  // Column<Long>
-    val topic = text("course_topic").nullable()
+//    val topic = text("course_topic").nullable()
+    val topic = integer("course_topic_id")
     val author = reference("author", Authors) // foreign key
 }
 

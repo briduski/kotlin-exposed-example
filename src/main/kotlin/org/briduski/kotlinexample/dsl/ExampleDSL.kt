@@ -1,7 +1,6 @@
 package org.briduski.kotlinexample.dsl
 
 
-//import no.norsktipping.customerovis.domain.CstStatusPerCardTable
 import org.briduski.kotlinexample.dsl.model.Customer
 import org.briduski.kotlinexample.dsl.model.Order
 import org.briduski.kotlinexample.dsl.tables.Customers
@@ -28,8 +27,8 @@ fun getLongSeqNumber(seqName: String): String {
     return  seqNumber.first().toString()
 }
 fun main() {
-//    Database.connect("jdbc:h2:mem:test", driver = "org.h2.Driver", user = "root", password = "")
-    Database.connect("jdbc:postgresql://localhost:7878/postgres", driver = "org.postgresql.Driver", user = "postgres", password = "postgres")
+    Database.connect("jdbc:h2:mem:test", driver = "org.h2.Driver", user = "root", password = "")
+//    Database.connect("jdbc:postgresql://localhost:7878/postgres", driver = "org.postgresql.Driver", user = "postgres", password = "postgres")
 
     // Delete tables in case they exists
     transaction {

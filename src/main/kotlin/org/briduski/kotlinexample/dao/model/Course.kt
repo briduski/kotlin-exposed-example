@@ -16,7 +16,7 @@ class Course(id: EntityID<Int>) : IntEntity(id) {
     companion object : IntEntityClass<Course>(Courses)
     var name by  Courses.name
     var duration by  Courses.duration
-    var topic by  Courses.topic
+    var topic_id by  Courses.topic
     var author by Author referencedOn Courses.author // foreign key
 }
 

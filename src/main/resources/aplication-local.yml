@@ -10,4 +10,4 @@ spring:
 
 logging:
   level:
-    no.norsktipping.customer: DEBUG
+    no.norsktipping.customer: INFO
