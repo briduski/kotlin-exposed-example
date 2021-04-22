@@ -98,13 +98,36 @@ fun main() {
 //                .innerJoin(userTable1 , {Courses.topic}, {CoursesTopic.topic_id} ) /// error!!!
                 .selectAll()
                 .map {
-                    println("${it[Courses.name]}" +
+                    println("A1: ${it[Courses.name]}" +
                             " - course_id-orig: ${it[Courses.topic]} " +
                             " - course_id-ref: ${it[userTable1[CoursesTopic.topic_id]]} " +
                             " - course_name-ref: ${it[userTable1[CoursesTopic.course_topic]]} ")
                 }
 
+/*
+ Cannot join with org.briduski.kotlinexample.dao.tables.CoursesTopic@5af9d5a8 as there is no matching primary key/foreign key pair and constraint missing
 
+        (Courses innerJoin CoursesTopic)
+                .selectAll()
+            //.select { Courses.topic eq CoursesTopic.topic_id }
+            .map {
+                println("A2: ${it[Courses.name]}" +
+                        " - course_id-orig: ${it[Courses.topic]} " +
+                        " - course_id-ref: ${it[CoursesTopic.topic_id]} " +
+                        " - course_name-ref: ${it[CoursesTopic.course_topic]} ")
+            }
+ */
+        val complexJoin = Join(
+                Courses, CoursesTopic,
+                onColumn = Courses.topic, otherColumn = CoursesTopic.topic_id,
+                joinType = JoinType.INNER)
+        complexJoin.selectAll().map {
+            println("A3: ${it[Courses.name]}" +
+                    " - course_id-orig: ${it[Courses.topic]} " +
+                    " - course_id-ref: ${it[CoursesTopic.topic_id]} " +
+                    " - course_name-ref: ${it[CoursesTopic.course_topic]} ")
+        }
+ 
 
 
 
